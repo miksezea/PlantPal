@@ -2,6 +2,7 @@
 {
     public class SensorData
     {
+        public int Id { get; set; }
         public string? DateTime { get; set; }
         public float PHValue { get; set; }
         public int Humidity { get; set; }
