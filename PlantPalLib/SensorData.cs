@@ -14,5 +14,10 @@
         {
             throw new NotImplementedException();
         }
+
+        public void Validate()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
