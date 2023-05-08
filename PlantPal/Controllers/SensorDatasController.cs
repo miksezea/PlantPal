@@ -27,10 +27,7 @@ namespace PlantPal.Controllers
             {
                 return NoContent();
             }
-
-            return Ok (result);
-
-
+            return Ok(result);
         }
 
         // GET api/<SensorDatasController>/5
