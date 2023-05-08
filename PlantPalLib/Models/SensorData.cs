@@ -8,7 +8,10 @@
 
         public void ValidatePHValue()
         {
-            throw new NotImplementedException();
+            if (PHValue < 0 || PHValue > 14)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
         public void ValidateHumidity()
         {
@@ -17,7 +20,8 @@
 
         public void Validate()
         {
-            throw new NotImplementedException();
+            ValidatePHValue();
+            
         }
     }
 }
