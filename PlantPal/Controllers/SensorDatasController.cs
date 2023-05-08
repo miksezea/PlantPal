@@ -23,6 +23,13 @@ namespace PlantPal.Controllers
         public ActionResult<IEnumerable<SensorData>> GetAll()
         {
             List<SensorData> result = _repository.GetAll();
+            if (result.Count < 1)
+            {
+                return NoContent();
+            }
+
+            return Ok (result);
+
 
         }
 
