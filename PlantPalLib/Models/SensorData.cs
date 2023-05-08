@@ -1,4 +1,4 @@
-﻿namespace PlantPalLib
+﻿namespace PlantPalLib.Models
 {
     public class SensorData
     {
