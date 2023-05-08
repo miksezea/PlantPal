@@ -39,8 +39,11 @@ namespace PlantPal.Repositories
         public SensorData? Delete(int Id)
         {
             SensorData foundSensorData = GetById(Id);
-
-            
+            if (foundSensorData != null)
+            {
+                _data.Remove(foundSensorData);
+            }
+            return foundSensorData;
         }
 
         
