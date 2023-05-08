@@ -28,16 +28,9 @@ namespace PlantPal.Repositories.Tests
             Assert.AreEqual(typeof(List<SensorData>), actual.GetType());
             Assert.AreEqual(3, actual.Count());
         }
-        /*
-        [TestMethod]
-        public void AddTest()
-        {
-            
-            
 
-            
 
-        }
-        */
+
+        
     }
 }
