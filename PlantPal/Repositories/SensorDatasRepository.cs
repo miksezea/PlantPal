@@ -44,11 +44,6 @@ namespace PlantPal.Repositories
                 _data.Remove(foundSensorData);
             }
             return foundSensorData;
-        }
-
-        
-        
-            
-
+        }                            
     }
 }

@@ -6,7 +6,7 @@ using PlantPal.Repositories;
 namespace PlantPal.Controllers
 {
     [EnableCors("AllowAll")]
-    [Route("api/[controller]")]
+    [Route("api/sensordatas")]
     [ApiController]
     public class SensorDatasController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace PlantPal.Controllers
             _repository = repository;
         }
 
-        // GET: api/<SensorDatasController>
+        // GET: sensordatas
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [HttpGet]
@@ -30,29 +30,55 @@ namespace PlantPal.Controllers
             return Ok(result);
         }
 
-        // GET api/<SensorDatasController>/5
+        // GET api/{id}
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("{id}")]
-        public string Get(int id)
+        public ActionResult<SensorData> Get(int id)
         {
-            return "value";
+            try
+            {
+                SensorData result = _repository.GetById(id);
+                return Ok(result);
+            }
+            catch (ArgumentException e)
+            {
+                return NotFound(e.Message);
+            }                       
         }
 
-        // POST api/<SensorDatasController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // POST: sensordatas
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpPost("add_item")]
+        public ActionResult<SensorData> Create([FromBody] SensorData newData)
         {
+            try
+            {
+                SensorData createdData = _repository.Add(newData);
+                return Created($"api/sensordatas/{createdData.Id}", createdData);
+            }
+            catch (ArgumentNullException e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        // PUT api/<SensorDatasController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<SensorDatasController>/5
+        // DELETE: sensordatas/{id}
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
+            try
+            {
+                _repository.Delete(id);
+                return Ok($"Sensordata with id '{id}' was deleted");
+            }
+            catch (ArgumentException e)
+            {
+                return NotFound(e.Message);
+            }
         }
     }
 }
