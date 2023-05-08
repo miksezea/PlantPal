@@ -12,8 +12,8 @@ namespace PlantPalLib.Tests
     [TestClass()]
     public class SensorDataTests
     {
-        SensorData correctPh = new SensorData() { PHValue = 14, Humidity = 50 };
-        SensorData correctPh2 = new SensorData() { PHValue = 0, Humidity = 50 };
+        SensorData correctPh = new SensorData() { PHValue = 14, Humidity = 0 };
+        SensorData correctPh2 = new SensorData() { PHValue = 0, Humidity = 100 };
         SensorData wrongPh = new SensorData() { PHValue = -1, Humidity = -1 };
         SensorData wrongPh2 = new SensorData() { PHValue = 15, Humidity = 101 };
         
@@ -43,9 +43,9 @@ namespace PlantPalLib.Tests
         public void ValidateHumidityShouldPass()
         {
             correctPh.ValidateHumidityValue();
-            var actual = correctPh.PHValue;
-            var actual2 = correctPh2.PHValue;
-            Assert.AreEqual(1, actual);
+            var actual = correctPh.Humidity;
+            var actual2 = correctPh2.Humidity;
+            Assert.AreEqual(0, actual);
             Assert.AreEqual(100, actual2);
         }
 

@@ -15,7 +15,7 @@
         }
         public void ValidateHumidityValue()
         {
-            if(Humidity < 1 || Humidity > 100)
+            if(Humidity < 0 || Humidity > 100)
             {
                 throw new ArgumentOutOfRangeException();
             }
