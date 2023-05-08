@@ -13,15 +13,18 @@
                 throw new ArgumentOutOfRangeException();
             }
         }
-        public void ValidateHumidity()
+        public void ValidateHumidityValue()
         {
-            throw new NotImplementedException();
+            if(Humidity < 1 || Humidity > 100)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
 
         public void Validate()
         {
             ValidatePHValue();
-            
+            ValidateHumidityValue();
         }
     }
 }
