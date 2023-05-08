@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantPal", "PlantPal\PlantPal.csproj", "{E369FD3E-4395-4D3E-B6D5-CA3BFF23C71D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantPalLib", "PlantPalLib\PlantPalLib.csproj", "{720BD1AE-149F-4400-B314-327E22BFA706}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E369FD3E-4395-4D3E-B6D5-CA3BFF23C71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E369FD3E-4395-4D3E-B6D5-CA3BFF23C71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E369FD3E-4395-4D3E-B6D5-CA3BFF23C71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E369FD3E-4395-4D3E-B6D5-CA3BFF23C71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{720BD1AE-149F-4400-B314-327E22BFA706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{720BD1AE-149F-4400-B314-327E22BFA706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{720BD1AE-149F-4400-B314-327E22BFA706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{720BD1AE-149F-4400-B314-327E22BFA706}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDF2469A-8C96-4BA6-81E9-B97EBAA722F1}
+	EndGlobalSection
+EndGlobal
