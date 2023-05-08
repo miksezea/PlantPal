@@ -1,18 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using Microsoft.AspNetCore.Cors;
+using PlantPalLib.Models;
+using PlantPal.Repositories;
 
 namespace PlantPal.Controllers
 {
+    [EnableCors("AllowAll")]
     [Route("api/[controller]")]
     [ApiController]
     public class SensorDatasController : ControllerBase
     {
-        // GET: api/<SensorDatasController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly SensorDatasRepository _repository;
+        public SensorDatasController(SensorDatasRepository repository)
         {
-            return new string[] { "value1", "value2" };
+            _repository = repository;
+        }
+
+        // GET: api/<SensorDatasController>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [HttpGet]
+        public ActionResult<IEnumerable<SensorData>> GetAll()
+        {
+            List<SensorData> result = _repository.GetAll();
+
         }
 
         // GET api/<SensorDatasController>/5
