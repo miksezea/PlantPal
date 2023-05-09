@@ -71,15 +71,17 @@ namespace PlantPal.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            try
+           if (_repository.GetById(id) == null)
+            {
+                return NotFound($"Sensor data with id '{id}' was not found");
+
+            }
+            else
             {
                 _repository.Delete(id);
                 return Ok($"Sensordata with id '{id}' was deleted");
             }
-            catch (ArgumentException e)
-            {
-                return NotFound(e.Message);
-            }
+            
         }
     }
 }
