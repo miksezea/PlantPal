@@ -2,7 +2,7 @@
 {
     public class SensorData
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string? DateTime { get; set; }
         public double Moisture { get; set; }
         public double Conductivity { get; set; }
