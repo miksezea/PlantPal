@@ -4,10 +4,10 @@
     {
         public int Id { get; set; }
         public string? DateTime { get; set; }
-        public float Moisture { get; set; }
-        public float Conductivity { get; set; }
-        public float Light { get; set; }
-        public float Temperature { get; set; }
+        public double Moisture { get; set; }
+        public double Conductivity { get; set; }
+        public double Light { get; set; }
+        public double Temperature { get; set; }
 
 
         public void ValidateMoistureValue()

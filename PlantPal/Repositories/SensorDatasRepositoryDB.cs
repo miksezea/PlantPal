@@ -13,14 +13,22 @@ namespace PlantPal.Repositories
 
         public SensorData Add(SensorData newSensorData)
         {
-           
+            newSensorData.Id = 0;
             _context.sensordata.Add(newSensorData);
             _context.SaveChanges();
             return newSensorData;
         }
         public SensorData? Delete(int Id)
         {
-            throw new NotImplementedException();
+            SensorData? SensorDataBeDeleted = GetById(Id);
+            if (SensorDataBeDeleted == null)
+            {
+                return null;
+            }
+            _context.sensordata.Remove(SensorDataBeDeleted);
+            _context.SaveChanges();
+            return SensorDataBeDeleted;
+
         }
             
         public List<SensorData> GetAll()
@@ -31,14 +39,9 @@ namespace PlantPal.Repositories
 
         public SensorData? GetById(int Id)
         {
-            throw new NotImplementedException();
+            return _context.sensordata.Find(Id);
         }
-            
-
-
-
-
-
+         
 
     }
 }
