@@ -2,55 +2,72 @@
 using PlantPalLib.Models;
 
 namespace PlantPalLib.Tests
-{
+{ 
     [TestClass()]
     public class SensorDataTests
     {
-        int highestValue = 14;
-        int lowestValue = 0;
-        SensorData correctMoisture = new SensorData() { Moisture = 0, Conductivity = 50 };
-        SensorData correctMoisture2 = new SensorData() { Moisture = 14, Conductivity = 50 };
-        SensorData wrongMoisture = new SensorData() { Moisture = -1, Conductivity = -1 };
-        SensorData wrongMoisture2 = new SensorData() { Moisture = 101, Conductivity = -1 };
-        SensorData middle = new SensorData() { Moisture = 7, Conductivity = 50 };
+        int highestValue;
+        int lowestValue;        
+        SensorData correctData = new SensorData() { Moisture = 0, Conductivity = 0, Temperature = -273 };
+        SensorData correctData2 = new SensorData() { Moisture = 100, Conductivity = 123456, Temperature = 41 };
+        SensorData middledata = new SensorData() { Moisture = 50 };
+        SensorData wrongData = new SensorData() { Moisture = -1, Conductivity = -1, Temperature = -274 };
+        SensorData wrongData2 = new SensorData() { Moisture = 101 };
+        
         
         [TestMethod()]
         public void ValidateMoistureValueShouldPass()
         {
-            correctMoisture.ValidateMoistureValue();
-            correctMoisture2.ValidateMoistureValue();
+            highestValue = 100;
+            lowestValue = 0;           
+            correctData.ValidateMoistureValue();
+            correctData2.ValidateMoistureValue();
+            middledata.ValidateMoistureValue();
 
-            Assert.IsTrue(correctMoisture.Moisture >= lowestValue && correctMoisture.Moisture <= highestValue);
-            Assert.IsTrue(correctMoisture2.Moisture >= lowestValue && correctMoisture2.Moisture <= highestValue);
+            Assert.IsTrue(correctData.Moisture >= lowestValue && correctData.Moisture <= highestValue);
+            Assert.IsTrue(correctData2.Moisture >= lowestValue && correctData2.Moisture <= highestValue);
+            Assert.IsTrue(middledata.Moisture >= lowestValue && middledata.Moisture <= highestValue);
         }
 
         [TestMethod()]
         public void ValidateMoistureShouldFail()
-        {
-            correctMoisture.ValidateMoistureValue();
-
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture.ValidateMoistureValue());
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture2.ValidateMoistureValue());
+        {            
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateMoistureValue());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData2.ValidateMoistureValue());
         }
 
         [TestMethod()]
         public void ValidateConductivityShouldPass()
         {
-            correctMoisture.ValidateConductivityValue();
-            correctMoisture2.ValidateConductivityValue();
+            lowestValue = 0;
+            correctData.ValidateConductivityValue();
+            correctData2.ValidateConductivityValue();
 
-            Assert.IsTrue(correctMoisture.Conductivity >= 0 && correctMoisture.Conductivity <= 100);
-            Assert.IsTrue(correctMoisture2.Conductivity >= 0 && correctMoisture2.Conductivity <= 100);
-            Assert.IsTrue(middle.Conductivity >= 0 && middle.Conductivity <= 100);
+            Assert.IsTrue(correctData.Conductivity >= lowestValue);
+            Assert.IsTrue(correctData2.Conductivity >= lowestValue);            
         }
 
         [TestMethod()]
         public void ValidateConductivityValueShouldFail()
+        {                        
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateConductivityValue());          
+        }
+
+        [TestMethod()]
+        public void ValidateTemperatureValueShouldPass()
         {
-            correctMoisture.ValidateConductivityValue();
-            
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture.ValidateConductivityValue());
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture2.ValidateConductivityValue());
-        }    
+            lowestValue = -273;
+            correctData.ValidateTemperature();
+            correctData2.ValidateTemperature();
+
+            Assert.IsTrue(correctData.Temperature >= lowestValue);
+            Assert.IsTrue(correctData2.Temperature >= lowestValue);
+        }
+
+        [TestMethod()]
+        public void ValidateTemperatureValueShouldFail()
+        {
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateTemperature());
+        }
     }
 }
