@@ -56,12 +56,18 @@ namespace PlantPal.Controllers
         {
             try
             {
+                newData.Validate();
+
                 SensorData createdData = _repository.Add(newData);
                 return Created($"api/sensordatas/{createdData.Id}", createdData);
             }
             catch (ArgumentNullException e)
             {
-                return BadRequest(e.Message);
+                return BadRequest("Invalid sensor data: " + e.Message);
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                return BadRequest("Invalid sensor data: " + e.Message);
             }
         }
 
@@ -72,16 +78,14 @@ namespace PlantPal.Controllers
         public ActionResult Delete(int id)
         {
            if (_repository.GetById(id) == null)
-            {
+           {
                 return NotFound($"Sensor data with id '{id}' was not found");
-
-            }
+           }
             else
             {
                 _repository.Delete(id);
                 return Ok($"Sensordata with id '{id}' was deleted");
-            }
-            
+            }            
         }
     }
 }
