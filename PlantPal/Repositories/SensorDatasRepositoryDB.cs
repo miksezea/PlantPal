@@ -20,14 +20,13 @@ namespace PlantPal.Repositories
         }
         public SensorData? Delete(int Id)
         {
-            SensorData? SensorDataBeDeleted = GetById(Id);
-            if (SensorDataBeDeleted == null)
+            SensorData? sensorDataBeDeleted = GetById(Id);
+            if (sensorDataBeDeleted != null)
             {
-                return null;
+                _context.sensordata.Remove(sensorDataBeDeleted);
+                _context.SaveChanges();
             }
-            _context.sensordata.Remove(SensorDataBeDeleted);
-            _context.SaveChanges();
-            return SensorDataBeDeleted;
+            return sensorDataBeDeleted;
 
         }
             
