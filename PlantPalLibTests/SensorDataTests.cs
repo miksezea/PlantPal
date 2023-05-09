@@ -1,11 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PlantPalLib.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Reflection.Emit;
 
 namespace PlantPalLib.Tests
 {
@@ -17,10 +11,9 @@ namespace PlantPalLib.Tests
         SensorData correctMoisture = new SensorData() { Moisture = 0, Conductivity = 50 };
         SensorData correctMoisture2 = new SensorData() { Moisture = 14, Conductivity = 50 };
         SensorData wrongMoisture = new SensorData() { Moisture = -1, Conductivity = -1 };
-        SensorData wrongMoisture2 = new SensorData() { Moisture = 15, Conductivity = 101 };
+        SensorData wrongMoisture2 = new SensorData() { Moisture = 101, Conductivity = -1 };
         SensorData middle = new SensorData() { Moisture = 7, Conductivity = 50 };
         
-
         [TestMethod()]
         public void ValidateMoistureValueShouldPass()
         {
@@ -31,20 +24,17 @@ namespace PlantPalLib.Tests
             Assert.IsTrue(correctMoisture2.Moisture >= lowestValue && correctMoisture2.Moisture <= highestValue);
         }
 
-       /*
         [TestMethod()]
-        public void ValidateMoistureValueShouldFail()
+        public void ValidateMoistureShouldFail()
         {
             correctMoisture.ValidateMoistureValue();
-            
+
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture.ValidateMoistureValue());
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture2.ValidateMoistureValue());
         }
-       */
 
-        
         [TestMethod()]
-        public void ValidateHumidityShouldPass()
+        public void ValidateConductivityShouldPass()
         {
             correctMoisture.ValidateConductivityValue();
             correctMoisture2.ValidateConductivityValue();
@@ -55,14 +45,12 @@ namespace PlantPalLib.Tests
         }
 
         [TestMethod()]
-        public void ValidateHumidityShouldFail()
+        public void ValidateConductivityValueShouldFail()
         {
             correctMoisture.ValidateConductivityValue();
-
+            
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture.ValidateConductivityValue());
             Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture2.ValidateConductivityValue());
-        }
-        
-        
+        }    
     }
 }
