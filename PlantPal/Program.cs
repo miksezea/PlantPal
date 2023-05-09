@@ -1,5 +1,9 @@
 using PlantPal;
+using Microsoft.EntityFrameworkCore;
 using PlantPal.Repositories;
+using PlantPal.Contexts;
+using Microsoft.Extensions.Options;
+using Microsoft.Extensions.DependencyInjection;
 
 const string policyName = "AllowAll";
 
@@ -32,13 +36,12 @@ if (useSql)
     optionsBuilder.UseSqlServer(Secrets.ConnectionString);
     SensorDataContext context =
         new SensorDataContext(optionsBuilder.Options);
-    builder.Services.AddSingleton<SensorDatasRepository>(
+    builder.Services.AddSingleton<ISensorDatasRepository>(
         new SensorDatasRepositoryDB(context));
 }
 else
 {
-    builder.Services.AddSingleton<IPokemonsRepository>
-        (new PokemonsRepository());
+    builder.Services.AddSingleton<ISensorDatasRepository>(new SensorDatasRepository());
 }
 
 var app = builder.Build();
