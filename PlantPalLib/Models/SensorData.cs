@@ -9,7 +9,6 @@
         public float Light { get; set; }
         public float Temperature { get; set; }
 
-
         public void ValidateMoistureValue()
         {
             if (Moisture < 0 || Moisture > 100)
@@ -17,6 +16,7 @@
                 throw new ArgumentOutOfRangeException();
             }
         }
+
         public void ValidateConductivityValue()
         {
             if(Conductivity < 0)
@@ -24,25 +24,20 @@
                 throw new ArgumentOutOfRangeException();
             }
         }
-
-        public void ValidateTemperatureValue()
-        {
-            
-        }
+       
         public void ValidateLightValue()
         {
             if (Light < 0)
                 throw new ArgumentOutOfRangeException();
         }
 
-
         public void Validate()
         {
             ValidateMoistureValue();
-            ValidateConductivityValue();
-            ValidateTemperatureValue();
+            ValidateConductivityValue();            
             ValidateLightValue();
         }
+
         public override string ToString()
         {
             return $"Id: {this.Id}, DateTime: {this.DateTime}, Moisture: {this.Moisture}, Conductivity: {this.Conductivity}, Light: {this.Light}, Temperature: {this.Temperature}";
