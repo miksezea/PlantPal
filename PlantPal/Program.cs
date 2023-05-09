@@ -1,9 +1,7 @@
-using PlantPal;
 using Microsoft.EntityFrameworkCore;
 using PlantPal.Repositories;
 using PlantPal.Contexts;
-using Microsoft.Extensions.Options;
-using Microsoft.Extensions.DependencyInjection;
+using PlantPal.Secrets;
 
 const string policyName = "AllowAll";
 
