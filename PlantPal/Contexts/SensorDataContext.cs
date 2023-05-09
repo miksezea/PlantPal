@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PlantPalLib.Models;
-//using PlantPal.Secrets;
 
 namespace PlantPal.Contexts
     
@@ -11,12 +10,12 @@ namespace PlantPal.Contexts
 
         public SensorDataContext() : base() { }
 
-        /*
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(Secrets.Secrets.ConnectionString);
+            optionsBuilder.UseSqlServer("connectionId=PlantPalConnection");
         }
-        */
+        
 
         public DbSet<SensorData> sensordata { get; set; }
     }

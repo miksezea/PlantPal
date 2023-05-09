@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PlantPal.Repositories;
 using PlantPal.Contexts;
-//using PlantPal.Secrets;
 
 const string policyName = "AllowAll";
 
@@ -24,12 +23,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-bool useSql = false;
+bool useSql = true;
 if (useSql)
 {
     var optionsBuilder =
         new DbContextOptionsBuilder<SensorDataContext>();
-    //optionsBuilder.UseSqlServer(Secrets.ConnectionString);
+    optionsBuilder.UseSqlServer("connectionId=PlantPalConnection");
     SensorDataContext context =
         new SensorDataContext(optionsBuilder.Options);
     builder.Services.AddSingleton<ISensorDatasRepository>(
