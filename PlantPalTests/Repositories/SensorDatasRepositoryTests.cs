@@ -34,15 +34,15 @@ namespace PlantPal.Repositories.Tests
         {
             // Arrange
             SensorDatasRepository repository = new SensorDatasRepository();
-            SensorData newSensorData = new SensorData { Humidity = 60, PHValue = 7 };
+            SensorData newSensorData = new SensorData { Conductivity = 60, Moisture = 7 };
 
             // Act
             SensorData addedSensorData = repository.Add(newSensorData);
 
             // Assert
             Assert.IsNotNull(addedSensorData);
-            Assert.AreEqual(newSensorData.Humidity, addedSensorData.Humidity);
-            Assert.AreEqual(newSensorData.PHValue, addedSensorData.PHValue);
+            Assert.AreEqual(newSensorData.Conductivity, addedSensorData.Conductivity);
+            Assert.AreEqual(newSensorData.Moisture, addedSensorData.Moisture);
             Assert.AreEqual(repository._nextId - 1, addedSensorData.Id);
         }
         [TestMethod]

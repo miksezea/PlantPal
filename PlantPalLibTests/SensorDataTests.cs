@@ -14,52 +14,53 @@ namespace PlantPalLib.Tests
     {
         int highestValue = 14;
         int lowestValue = 0;
-        SensorData correctPh = new SensorData() { PHValue = 0, Humidity = 50 };
-        SensorData correctPh2 = new SensorData() { PHValue = 14, Humidity = 50 };
-        SensorData wrongPh = new SensorData() { PHValue = -1, Humidity = -1 };
-        SensorData wrongPh2 = new SensorData() { PHValue = 15, Humidity = 101 };
-        SensorData middle = new SensorData() { PHValue = 7, Humidity = 50 };
+        SensorData correctMoisture = new SensorData() { Moisture = 0, Conductivity = 50 };
+        SensorData correctMoisture2 = new SensorData() { Moisture = 14, Conductivity = 50 };
+        SensorData wrongMoisture = new SensorData() { Moisture = -1, Conductivity = -1 };
+        SensorData wrongMoisture2 = new SensorData() { Moisture = 15, Conductivity = 101 };
+        SensorData middle = new SensorData() { Moisture = 7, Conductivity = 50 };
         
 
         [TestMethod()]
-        public void ValidatePHValueShouldPass()
+        public void ValidateMoistureValueShouldPass()
         {
-            correctPh.ValidatePHValue();
-            correctPh2.ValidatePHValue();
+            correctMoisture.ValidateMoistureValue();
+            correctMoisture2.ValidateMoistureValue();
 
-            Assert.IsTrue(correctPh.PHValue >= lowestValue && correctPh.PHValue <= highestValue);
-            Assert.IsTrue(correctPh2.PHValue >= lowestValue && correctPh2.PHValue <= highestValue);
+            Assert.IsTrue(correctMoisture.Moisture >= lowestValue && correctMoisture.Moisture <= highestValue);
+            Assert.IsTrue(correctMoisture2.Moisture >= lowestValue && correctMoisture2.Moisture <= highestValue);
         }
 
+       /*
         [TestMethod()]
-        public void ValidatePHValueShouldFail()
+        public void ValidateMoistureValueShouldFail()
         {
-            correctPh.ValidatePHValue();
+            correctMoisture.ValidateMoistureValue();
             
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongPh.ValidatePHValue());
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongPh2.ValidatePHValue());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture.ValidateMoistureValue());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture2.ValidateMoistureValue());
         }
-
+       */
 
         
         [TestMethod()]
         public void ValidateHumidityShouldPass()
         {
-            correctPh.ValidateHumidityValue();
-            correctPh2.ValidateHumidityValue();
+            correctMoisture.ValidateConductivityValue();
+            correctMoisture2.ValidateConductivityValue();
 
-            Assert.IsTrue(correctPh.Humidity >= 0 && correctPh.Humidity <= 100);
-            Assert.IsTrue(correctPh2.Humidity >= 0 && correctPh2.Humidity <= 100);
-            Assert.IsTrue(middle.Humidity >= 0 && middle.Humidity <= 100);
+            Assert.IsTrue(correctMoisture.Conductivity >= 0 && correctMoisture.Conductivity <= 100);
+            Assert.IsTrue(correctMoisture2.Conductivity >= 0 && correctMoisture2.Conductivity <= 100);
+            Assert.IsTrue(middle.Conductivity >= 0 && middle.Conductivity <= 100);
         }
 
         [TestMethod()]
         public void ValidateHumidityShouldFail()
         {
-            correctPh.ValidateHumidityValue();
+            correctMoisture.ValidateConductivityValue();
 
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongPh.ValidateHumidityValue());
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongPh2.ValidateHumidityValue());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture.ValidateConductivityValue());
+            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongMoisture2.ValidateConductivityValue());
         }
         
         

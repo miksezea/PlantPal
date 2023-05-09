@@ -12,9 +12,9 @@ namespace PlantPal.Repositories
             _nextId = 1;
             _data = new List<SensorData>()
             {
-                new SensorData { Id = _nextId++, Humidity = 50, PHValue = 4 },
-                new SensorData { Id = _nextId++, Humidity = 75, PHValue = 5 },
-                new SensorData { Id = _nextId++, Humidity = 25 , PHValue = 6 },
+                new SensorData { Id = _nextId++, DateTime = "02/05/2023, 11:09:30", Conductivity = 50, Moisture = 4, Temperature = 50, Light = 2 },
+                new SensorData { Id = _nextId++, DateTime = "02/05/2023, 11:09:30", Conductivity = 75, Moisture = 5, Temperature = 150, Light = 4 },
+                new SensorData { Id = _nextId++, DateTime = "02/05/2023, 11:09:30", Conductivity = 25 , Moisture = 6, Temperature = 70, Light = 50 },
             };
         }
 

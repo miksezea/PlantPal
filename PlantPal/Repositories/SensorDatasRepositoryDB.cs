@@ -13,7 +13,7 @@ namespace PlantPal.Repositories
 
         public SensorData Add(SensorData newSensorData)
         {
-            newSensorData.Id = 0;
+           
             _context.sensordata.Add(newSensorData);
             _context.SaveChanges();
             return newSensorData;

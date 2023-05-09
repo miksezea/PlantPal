@@ -4,32 +4,48 @@
     {
         public int Id { get; set; }
         public string? DateTime { get; set; }
-        public float PHValue { get; set; }
-        public int Humidity { get; set; }
+        public float Moisture { get; set; }
+        public float Conductivity { get; set; }
+        public float Light { get; set; }
+        public float Temperature { get; set; }
 
-        public void ValidatePHValue()
+
+        public void ValidateMoistureValue()
         {
-            if (PHValue < 0 || PHValue > 14)
+            if (Moisture < 0 || Moisture > 100)
             {
                 throw new ArgumentOutOfRangeException();
             }
         }
-        public void ValidateHumidityValue()
+        public void ValidateConductivityValue()
         {
-            if(Humidity < 0 || Humidity > 100)
+            if(Conductivity < 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
         }
+
+        public void ValidateTemperatureValue()
+        {
+            
+        }
+        public void ValidateLightValue()
+        {
+            if (Light < 0)
+                throw new ArgumentOutOfRangeException();
+        }
+
 
         public void Validate()
         {
-            ValidatePHValue();
-            ValidateHumidityValue();
+            ValidateMoistureValue();
+            ValidateConductivityValue();
+            ValidateTemperatureValue();
+            ValidateLightValue();
         }
         public override string ToString()
         {
-            return $"Id: {this.Id}, DateTime: {this.DateTime}, PHValue: {this.PHValue}, Humidity: {this.Humidity}";
+            return $"Id: {this.Id}, DateTime: {this.DateTime}, Moisture: {this.Moisture}, Conductivity: {this.Conductivity}, Light: {this.Light}, Temperature: {this.Temperature}";
         }
     }
 }
