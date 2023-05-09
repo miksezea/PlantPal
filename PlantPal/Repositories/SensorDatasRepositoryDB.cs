@@ -22,7 +22,7 @@ namespace PlantPal.Repositories
         {
             throw new NotImplementedException();
         }
-
+            
         public List<SensorData> GetAll()
         {
             return _context.sensordata.ToList();

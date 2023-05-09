@@ -30,9 +30,30 @@ namespace PlantPal.Repositories.Tests
         }
 
         [TestMethod()]
-        public void AddTest()
+        public void AddTest_NewSensorData()
         {
-            
+            // Arrange
+            SensorDatasRepository repository = new SensorDatasRepository();
+            SensorData newSensorData = new SensorData { Humidity = 60, PHValue = 7 };
+
+            // Act
+            SensorData addedSensorData = repository.Add(newSensorData);
+
+            // Assert
+            Assert.IsNotNull(addedSensorData);
+            Assert.AreEqual(newSensorData.Humidity, addedSensorData.Humidity);
+            Assert.AreEqual(newSensorData.PHValue, addedSensorData.PHValue);
+            Assert.AreEqual(repository._nextId - 1, addedSensorData.Id);
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Add_NullSensorData_ThrowsArgumentNullException()
+        {
+            // Arrange
+            SensorDatasRepository repository = new SensorDatasRepository();
+
+            // Act
+            SensorData addedSensorData = repository.Add(null);
         }
 
 
@@ -42,3 +63,10 @@ namespace PlantPal.Repositories.Tests
         
     }
 }
+
+
+
+
+
+        
+    

@@ -5,7 +5,7 @@ namespace PlantPal.Repositories
 {
     public class SensorDatasRepository : ISensorDatasRepository
     {
-        private int _nextId;
+        public int _nextId;
         public List<SensorData> _data;
         public SensorDatasRepository()
         {
@@ -31,6 +31,10 @@ namespace PlantPal.Repositories
 
         public SensorData Add(SensorData newSensorData)
         {
+            if (newSensorData == null)
+            {
+                throw new ArgumentNullException(nameof(newSensorData), "SensorData cannot be null.");
+            }
             newSensorData.Id = _nextId++;
             _data.Add(newSensorData);
             return newSensorData;
