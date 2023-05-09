@@ -10,4 +10,4 @@ namespace PlantPal.Contexts
         public DbSet<SensorData> sensordata { get; set; }
     }
 }
-}
+

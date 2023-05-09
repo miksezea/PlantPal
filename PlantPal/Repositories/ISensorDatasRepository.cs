@@ -1,7 +1,7 @@
 ﻿using PlantPalLib.Models;
 namespace PlantPal.Repositories
 {
-        public interface ISensorDatasRepository
+        public interface ISensorDatasRepository 
         {
             SensorData Add(SensorData newSensorData);
             SensorData Delete(int Id);

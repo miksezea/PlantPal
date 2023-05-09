@@ -3,7 +3,7 @@
 namespace PlantPal.Repositories
     
 {
-    public class SensorDatasRepository
+    public class SensorDatasRepository : ISensorDatasRepository
     {
         private int _nextId;
         public List<SensorData> _data;
