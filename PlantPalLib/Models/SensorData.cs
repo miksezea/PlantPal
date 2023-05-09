@@ -27,5 +27,9 @@
             ValidatePHValue();
             ValidateHumidityValue();
         }
+        public override string ToString()
+        {
+            return $"Id: {this.Id}, DateTime: {this.DateTime}, PHValue: {this.PHValue}, Humidity: {this.Humidity}";
+        }
     }
 }
