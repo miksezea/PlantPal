@@ -28,7 +28,9 @@
         public void ValidateLightValue()
         {
             if (Light < 0)
+            {
                 throw new ArgumentOutOfRangeException();
+            }
         }
 
         public void Validate()
