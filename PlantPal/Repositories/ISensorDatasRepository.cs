@@ -1,4 +1,5 @@
 ﻿using PlantPalLib.Models;
+
 namespace PlantPal.Repositories
 {
         public interface ISensorDatasRepository 

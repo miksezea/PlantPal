@@ -38,29 +38,36 @@ namespace PlantPal.Controllers
         {
             try
             {
-                SensorData result = _repository.GetById(id);
-                return Ok(result);
+                return Ok(_repository.GetById(id));
             }
-            catch (ArgumentException e)
+            catch (ArgumentException ex)
             {
-                return NotFound(e.Message);
+                return NotFound(ex.Message);
             }                       
         }
 
         // POST: sensordatas
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [HttpPost("add_item")]
-        public ActionResult<SensorData> Create([FromBody] SensorData newData)
+        [HttpPost]
+        public ActionResult<SensorData> Post([FromBody] SensorData newData)
         {
             try
             {
                 SensorData createdData = _repository.Add(newData);
                 return Created($"api/sensordatas/{createdData.Id}", createdData);
             }
-            catch (ArgumentNullException e)
+            catch (ArgumentNullException ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 
@@ -68,17 +75,14 @@ namespace PlantPal.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpDelete("{id}")]
-        public ActionResult Delete(int id)
+        public ActionResult<SensorData> Delete(int id)
         {
-           if (_repository.GetById(id) == null)
+           SensorData deletedData = _repository.Delete(id);
+           if (deletedData.Id == null)
             {
                 return NotFound($"Sensor data with id '{id}' was not found");
             }
-            else
-            {
-                _repository.Delete(id);
-                return Ok($"Sensordata with id '{id}' was deleted");
-            }
+            return Ok($"Sensordata with id '{deletedData.Id}' was deleted");
         }
     }
 }

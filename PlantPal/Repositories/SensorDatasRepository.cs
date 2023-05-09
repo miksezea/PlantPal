@@ -22,9 +22,9 @@ namespace PlantPal.Repositories
             return new List<SensorData>(_data);
         }
 
-        public SensorData? GetById(int Id)
+        public SensorData? GetById(int id)
         {
-            return _data.Find(x => x.Id == Id);
+            return _data.Find(x => x.Id == id);
         }
 
         public SensorData Add(SensorData newSensorData)
@@ -38,9 +38,9 @@ namespace PlantPal.Repositories
             return newSensorData;
         }
 
-        public SensorData? Delete(int Id)
+        public SensorData? Delete(int id)
         {
-            SensorData foundSensorData = GetById(Id);
+            SensorData foundSensorData = GetById(id);
             if (foundSensorData != null)
             {
                 _data.Remove(foundSensorData);

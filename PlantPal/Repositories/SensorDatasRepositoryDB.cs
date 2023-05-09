@@ -1,12 +1,13 @@
 ﻿using PlantPal.Contexts;
 using PlantPalLib.Models;
+
 namespace PlantPal.Repositories
 {
     public class SensorDatasRepositoryDB : ISensorDatasRepository
     {
-        private SensorDataContext _context;
+        private SensorDataDbContext _context;
         
-        public SensorDatasRepositoryDB(SensorDataContext context)
+        public SensorDatasRepositoryDB(SensorDataDbContext context)
         {
             _context = context;
         }
@@ -18,22 +19,20 @@ namespace PlantPal.Repositories
             _context.SaveChanges();
             return newSensorData;
         }
-        public SensorData? Delete(int Id)
+        public SensorData? Delete(int id)
         {
-            SensorData? sensorDataBeDeleted = GetById(Id);
+            SensorData? sensorDataBeDeleted = GetById(id);
             if (sensorDataBeDeleted != null)
             {
                 _context.sensordata.Remove(sensorDataBeDeleted);
                 _context.SaveChanges();
             }
             return sensorDataBeDeleted;
-
         }
             
         public List<SensorData> GetAll()
         {
             return _context.sensordata.ToList();
-
         }
 
         public SensorData? GetById(int Id)
