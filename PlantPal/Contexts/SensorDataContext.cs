@@ -11,10 +11,12 @@ namespace PlantPal.Contexts
 
         public SensorDataContext() : base() { }
 
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(Secrets.Secrets.ConnectionString);
         }
+        */
 
         public DbSet<SensorData> sensordata { get; set; }
     }
