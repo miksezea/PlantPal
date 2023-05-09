@@ -23,16 +23,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var connection = String.Empty;
 bool useSql = true;
 if (useSql)
 {
+    connection = Environment.GetEnvironmentVariable("PlantPalDbConnection");
     var optionsBuilder =
-        new DbContextOptionsBuilder<SensorDataContext>();
-    optionsBuilder.UseSqlServer("connectionId=PlantPalConnection");
-    SensorDataContext context =
-        new SensorDataContext(optionsBuilder.Options);
+        new DbContextOptionsBuilder<SensorDataDbContext>();
+    SensorDataDbContext context =
+        new SensorDataDbContext(optionsBuilder.Options);
     builder.Services.AddSingleton<ISensorDatasRepository>(
         new SensorDatasRepositoryDB(context));
+    builder.Services.AddDbContext<SensorDataDbContext>(options =>
+        options.UseSqlServer(connection));
 }
 else
 {
