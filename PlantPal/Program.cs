@@ -24,6 +24,23 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton<SensorDatasRepository>(new SensorDatasRepository());
 
+bool useSql = true;
+if (useSql)
+{
+    var optionsBuilder =
+        new DbContextOptionsBuilder<SensorDataContext>();
+    optionsBuilder.UseSqlServer(Secrets.ConnectionString);
+    SensorDataContext context =
+        new SensorDataContext(optionsBuilder.Options);
+    builder.Services.AddSingleton<SensorDatasRepository>(
+        new SensorDatasRepositoryDB(context));
+}
+else
+{
+    builder.Services.AddSingleton<IPokemonsRepository>
+        (new PokemonsRepository());
+}
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -10,8 +10,9 @@ namespace PlantPal.Controllers
     [ApiController]
     public class SensorDatasController : ControllerBase
     {
-        private readonly SensorDatasRepository _repository;
-        public SensorDatasController(SensorDatasRepository repository)
+        private ISensorDatasRepository _repository;
+       
+        public SensorDatasController(ISensorDatasRepository repository)
         {
             _repository = repository;
         }

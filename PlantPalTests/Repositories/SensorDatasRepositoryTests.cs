@@ -29,6 +29,12 @@ namespace PlantPal.Repositories.Tests
             Assert.AreEqual(3, actual.Count());
         }
 
+        [TestMethod()]
+        public void AddTest()
+        {
+            
+        }
+
 
 
 
