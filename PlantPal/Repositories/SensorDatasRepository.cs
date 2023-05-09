@@ -1,7 +1,6 @@
 ﻿using PlantPalLib.Models;
 
 namespace PlantPal.Repositories
-    
 {
     public class SensorDatasRepository : ISensorDatasRepository
     {
@@ -17,7 +16,6 @@ namespace PlantPal.Repositories
                 new SensorData { Id = _nextId++, DateTime = "02/05/2023, 11:09:30", Conductivity = 25 , Moisture = 6, Temperature = 70, Light = 50 },
             };
         }
-
 
         public List<SensorData> GetAll()
         {

@@ -74,14 +74,12 @@ namespace PlantPal.Controllers
            if (_repository.GetById(id) == null)
             {
                 return NotFound($"Sensor data with id '{id}' was not found");
-
             }
             else
             {
                 _repository.Delete(id);
                 return Ok($"Sensordata with id '{id}' was deleted");
             }
-            
         }
     }
 }
