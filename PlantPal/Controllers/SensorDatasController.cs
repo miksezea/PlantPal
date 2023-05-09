@@ -11,7 +11,6 @@ namespace PlantPal.Controllers
     public class SensorDatasController : ControllerBase
     {
         private ISensorDatasRepository _repository;
-       
         public SensorDatasController(ISensorDatasRepository repository)
         {
             _repository = repository;
