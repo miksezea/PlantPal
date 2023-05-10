@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PlantPalLib.Models
+﻿namespace PlantPalLib.Models
 {
-     public class Plant
+    public class Plant
     {
         public string? Name { get; set; }
         public int? PlantId { get; set; }

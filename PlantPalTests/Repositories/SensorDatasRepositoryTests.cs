@@ -1,11 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PlantPal.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PlantPal.Repositories;
 using PlantPalLib.Models;
 
 namespace PlantPal.Repositories.Tests
@@ -45,6 +38,7 @@ namespace PlantPal.Repositories.Tests
             Assert.AreEqual(newSensorData.Moisture, addedSensorData.Moisture);
             Assert.AreEqual(repository._nextId - 1, addedSensorData.Id);
         }
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void Add_NullSensorData_ThrowsArgumentNullException()
