@@ -4,9 +4,9 @@ using PlantPalLib.Models;
 namespace PlantPal.Contexts
 
 {
-    public class SensorDataDbContext : DbContext
+    public class PlantPalDbContext : DbContext
     {
-        public SensorDataDbContext(DbContextOptions<SensorDataDbContext> options) : base(options) { }
+        public PlantPalDbContext(DbContextOptions<PlantPalDbContext> options) : base(options) { }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
