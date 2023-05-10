@@ -14,7 +14,6 @@ namespace PlantPalLib.Tests
         SensorData wrongData = new SensorData() { Moisture = -1, Conductivity = -1, Temperature = -274 };
         SensorData wrongData2 = new SensorData() { Moisture = 101 };
         
-        
         [TestMethod()]
         public void ValidateMoistureValueShouldPass()
         {

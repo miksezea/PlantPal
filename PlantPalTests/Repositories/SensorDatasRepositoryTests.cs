@@ -55,12 +55,6 @@ namespace PlantPal.Repositories.Tests
             // Act
             SensorData addedSensorData = repository.Add(null);
         }
-
-
-
-
-
-        
     }
 }
 
