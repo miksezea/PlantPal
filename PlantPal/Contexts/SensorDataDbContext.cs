@@ -23,6 +23,7 @@ namespace PlantPal.Contexts
         }
 
         public DbSet<SensorData> sensordata { get; set; }
+        public DbSet<Plant> plants { get; set; }
     }
 }
 
