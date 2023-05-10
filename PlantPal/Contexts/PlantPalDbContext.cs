@@ -2,11 +2,11 @@
 using PlantPalLib.Models;
 
 namespace PlantPal.Contexts
-    
+
 {
-    public class PlantPalDbContext : DbContext
+    public class SensorDataDbContext : DbContext
     {
-        public PlantPalDbContext(DbContextOptions<PlantPalDbContext> options) : base(options) { }
+        public SensorDataDbContext(DbContextOptions<SensorDataDbContext> options) : base(options) { }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -23,6 +23,7 @@ namespace PlantPal.Contexts
         }
 
         public DbSet<SensorData> sensordata { get; set; }
+        public DbSet<Plant> plants { get; set; }
     }
 }
 
