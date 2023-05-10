@@ -19,9 +19,9 @@ namespace PlantPal.Repositories
             _context.SaveChanges();
             return newSensorData;
         }
-        public SensorData? Delete(int id)
+        public SensorData? Delete(int Id)
         {
-            SensorData? sensorDataBeDeleted = GetById(id);
+            SensorData? sensorDataBeDeleted = GetById(Id);
             if (sensorDataBeDeleted != null)
             {
                 _context.sensordata.Remove(sensorDataBeDeleted);

@@ -35,7 +35,7 @@ if (useSql)
     builder.Services.AddSingleton<ISensorDatasRepository>(
         new SensorDatasRepositoryDb(context));
     builder.Services.AddSingleton<IPlantsRepository>(
-        new PlantsRepositoryDb)
+        new PlantsRepositoryDb(context));
     builder.Services.AddDbContext<PlantPalDbContext>(options =>
         options.UseSqlServer(connection));
 }
