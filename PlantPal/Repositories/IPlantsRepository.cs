@@ -8,5 +8,6 @@ namespace PlantPal.Repositories
         Plant Delete(int PlantId);
         List<Plant> GetAll();
         Plant GetById(int PlantId);
+        Plant Update(int PlantId, Plant updates);
     }
 }

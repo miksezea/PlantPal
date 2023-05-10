@@ -40,5 +40,19 @@ namespace PlantPal.Repositories
         {
             return _context.plants.Find(Id);
         }
+
+        public Plant? Update(int Id, Plant updates)
+        {
+            Plant? updatedPlant = _context.plants.Find(Id);
+            if (updatedPlant != null)
+            {
+                updatedPlant.Name = updates.Name;
+                updatedPlant.Type = updates.Type;
+                updatedPlant.Description = updates.Description;
+                updatedPlant.Status = updates.Status;
+                _context.SaveChanges();
+            }
+            return updatedPlant;
+        }
     }
 }
