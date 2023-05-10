@@ -29,12 +29,14 @@ if (useSql)
 {
     connection = Environment.GetEnvironmentVariable("PlantPalDbConnection");
     var optionsBuilder =
-        new DbContextOptionsBuilder<SensorDataDbContext>();
-    SensorDataDbContext context =
-        new SensorDataDbContext(optionsBuilder.Options);
+        new DbContextOptionsBuilder<PlantPalDbContext>();
+    PlantPalDbContext context =
+        new PlantPalDbContext(optionsBuilder.Options);
     builder.Services.AddSingleton<ISensorDatasRepository>(
-        new SensorDatasRepositoryDB(context));
-    builder.Services.AddDbContext<SensorDataDbContext>(options =>
+        new SensorDatasRepositoryDb(context));
+    builder.Services.AddSingleton<IPlantsRepository>(
+        new PlantsRepositoryDb)
+    builder.Services.AddDbContext<PlantPalDbContext>(options =>
         options.UseSqlServer(connection));
 }
 else
