@@ -3,12 +3,12 @@ using PlantPalLib.Models;
 
 namespace PlantPal.Repositories
 {
-    public class PlantsRepositoryDB : IPlantsRepository
+    public class PlantsRepositoryDb : IPlantsRepository
     {
         private SensorDataDbContext _context;
         
 
-        public PlantsRepositoryDB(SensorDataDbContext context)
+        public PlantsRepositoryDb(SensorDataDbContext context)
         {
             _context = context;
         }
