@@ -2,6 +2,7 @@
 {
     public class SensorData
     {
+        //Tester lige om jeg kan committe
         public int? Id { get; set; }
         public string? DateTime { get; set; }
         public double Moisture { get; set; }
