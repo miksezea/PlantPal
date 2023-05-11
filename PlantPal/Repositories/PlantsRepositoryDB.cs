@@ -46,10 +46,12 @@ namespace PlantPal.Repositories
             Plant? updatedPlant = _context.plants.Find(Id);
             if (updatedPlant != null)
             {
+                /*
                 updatedPlant.Name = updates.Name;
                 updatedPlant.Type = updates.Type;
                 updatedPlant.Description = updates.Description;
                 updatedPlant.Status = updates.Status;
+                */
                 updatedPlant.PlantSelected = updates.PlantSelected;
                 _context.SaveChanges();
             }
