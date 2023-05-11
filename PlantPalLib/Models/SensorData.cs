@@ -35,6 +35,8 @@
         /// </summary>
         public double Temperature { get; set; }
 
+        public Plant Plant { get; set; }
+
         /// <summary>
         /// Tjekker at Moisture har en lovlig value
         /// </summary>
