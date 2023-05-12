@@ -15,6 +15,8 @@ namespace PlantPal.Repositories
         public SensorData Add(SensorData newSensorData)
         {
             newSensorData.Id = null;
+            var selectedPlant = _context.plants.FirstOrDefault(p => p.PlantSelected == true);
+            newSensorData.Plant = selectedPlant;
             _context.sensordata.Add(newSensorData);
             _context.SaveChanges();
             return newSensorData;
