@@ -109,7 +109,7 @@ namespace PlantPal.Controllers
         public ActionResult<Plant> Delete(int id)
         {
             Plant deletedPlant = _repository.Delete(id);
-            if (deletedPlant.PlantId == null)
+            if (_repository.GetById(id) == null)
             {
                 return NotFound($"Plant with id '{id}' was not found");
             }

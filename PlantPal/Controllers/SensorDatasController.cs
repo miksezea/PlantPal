@@ -78,7 +78,7 @@ namespace PlantPal.Controllers
         public ActionResult<SensorData> Delete(int id)
         {
            SensorData deletedData = _repository.Delete(id);
-           if (deletedData.Id == null)
+           if (_repository.GetById(id) == null)
             {
                 return NotFound($"Sensor data with id '{id}' was not found");
             }
