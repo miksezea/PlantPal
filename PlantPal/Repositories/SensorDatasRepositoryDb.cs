@@ -5,8 +5,15 @@ namespace PlantPal.Repositories
 {
     public class SensorDatasRepositoryDb : ISensorDatasRepository
     {
+        /// <summary>
+        /// Forbindelse til context
+        /// </summary>
         private PlantPalDbContext _context;
         
+        /// <summary>
+        /// Constructor til SensorDatasRepositoryDb
+        /// </summary>
+        /// <param name="context"></param>
         public SensorDatasRepositoryDb(PlantPalDbContext context)
         {
             _context = context;
@@ -15,8 +22,12 @@ namespace PlantPal.Repositories
         public SensorData Add(SensorData newSensorData)
         {
             newSensorData.Id = null;
+
+            // Søger efter plante, der bool-værdien 'true' i PlantSelected
             var selectedPlant = _context.plants.FirstOrDefault(p => p.PlantSelected == true);
+            // Tilknytter sensordata til planten med PlantSelected 'true'
             newSensorData.Plant = selectedPlant;
+
             _context.sensordata.Add(newSensorData);
             _context.SaveChanges();
             return newSensorData;
