@@ -19,40 +19,38 @@ namespace PlantPal.Repositories
             _context = context;
         }
 
-        public SensorData Add(SensorData newSensorData)
+        public SensorData Add(SensorData newSensorData) // Tilføj sensordata
         {
-            newSensorData.Id = null;
+            newSensorData.Id = null; // Sætter Id til null, så den automatisk bliver tildelt
 
-            // Søger efter plante, der bool-værdien 'true' i PlantSelected
-            var selectedPlant = _context.plants.FirstOrDefault(p => p.PlantSelected == true);
-            // Tilknytter sensordata til planten med PlantSelected 'true'
-            newSensorData.Plant = selectedPlant;
+            var selectedPlant = _context.plants.FirstOrDefault(p => p.PlantSelected == true); // Søger efter plante, der bool-værdien 'true' i PlantSelected
 
-            _context.sensordata.Add(newSensorData);
-            _context.SaveChanges();
-            return newSensorData;
+			newSensorData.Plant = selectedPlant; // Tilknytter sensordata til planten med PlantSelected 'true'
+
+			_context.sensordata.Add(newSensorData); // Tilføjer sensordata til context
+            _context.SaveChanges(); // Gemmer ændringer i context
+            return newSensorData; // Returnerer sensordata
         }
-        public SensorData? Delete(int Id)
+
+        public SensorData? Delete(int Id) // Slet sensordata
         {
-            SensorData? sensorDataBeDeleted = GetById(Id);
-            if (sensorDataBeDeleted != null)
+            SensorData? sensorDataBeDeleted = GetById(Id); // Henter sensordata ud fra Id
+            if (sensorDataBeDeleted != null) // Hvis sensordata ikke er null
             {
-                _context.sensordata.Remove(sensorDataBeDeleted);
-                _context.SaveChanges();
+                _context.sensordata.Remove(sensorDataBeDeleted); // Slet sensordata
+                _context.SaveChanges(); // Gem ændringer i context
             }
-            return sensorDataBeDeleted;
+            return sensorDataBeDeleted; // Returner sensordata
         }
-            
-        public List<SensorData> GetAll()
+           
+        public List<SensorData> GetAll() // Hent alle sensordata
         {
-            return _context.sensordata.ToList();
+            return _context.sensordata.ToList(); // Returner alle sensordata. ToList() konverterer til liste. 
         }
 
-        public SensorData? GetById(int Id)
+        public SensorData? GetById(int Id) // Hent sensordata ud fra Id
         {
-            return _context.sensordata.Find(Id);
+            return _context.sensordata.Find(Id); // Returner sensordata ud fra Id
         }
-         
-
     }
 }

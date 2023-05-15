@@ -2,12 +2,12 @@
 
 namespace PlantPal.Repositories
 {
-        public interface ISensorDatasRepository 
+        public interface ISensorDatasRepository
         {
-            SensorData Add(SensorData newSensorData);
-            SensorData Delete(int Id);
-            List<SensorData> GetAll();
-            SensorData GetById(int Id);
+            SensorData Add(SensorData newSensorData); // Tilføj sensordata
+            SensorData Delete(int Id); // Slet sensordata
+            List<SensorData> GetAll(); // Hent alle sensordata
+            SensorData GetById(int Id); // Hent sensordata ud fra Id
         }
     }
 
