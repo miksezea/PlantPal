@@ -101,6 +101,34 @@ namespace PlantPal.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpPut("selected/{id}")]
+        public ActionResult<Plant> PutSelected(int id)
+        {
+            try
+            {
+                Plant? updatedPlant = _repository.UpdateSelected(id);
+                return Ok(updatedPlant);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (ArgumentNullException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         // DELETE api/<PlantsController>/5
         [ProducesResponseType(StatusCodes.Status200OK)]
