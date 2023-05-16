@@ -51,6 +51,7 @@ namespace PlantPal.Repositories
                 updatedPlant.Type = updates.Type;
                 updatedPlant.Description = updates.Description;
                 updatedPlant.Status = updates.Status;
+                updatedPlant.PlantSelected = updates.PlantSelected;
                 _context.SaveChanges();
             }
             return updatedPlant;

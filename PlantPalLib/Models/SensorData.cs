@@ -36,9 +36,14 @@
         public double Temperature { get; set; }
 
         /// <summary>
-        /// Tjekker at Moisture har en lovlig value
+        /// Planten som sensordata bindes til
         /// </summary>
-        /// <exception cref="ArgumentOutOfRangeException">Hvis</exception>
+        public Plant Plant { get; set; }
+
+        /// <summary>
+        /// Tjekker at Moisture har en lovlig værdi
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Værdi skal være mellem 0 og 100</exception>
         public void ValidateMoistureValue()
         {
             if (Moisture < 0 || Moisture > 100)
@@ -47,6 +52,10 @@
             }
         }
 
+        /// <summary>
+        /// Tjekker at Conductivity har en lovlig værdi
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Værdi kan ikke være mindre end 0</exception>
         public void ValidateConductivityValue()
         {
             if(Conductivity < 0)
@@ -55,6 +64,10 @@
             }
         }
        
+        /// <summary>
+        /// Tjekker at Light har en lovlig værdig
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Værdi kan ikke være mindre end 0</exception>
         public void ValidateLightValue()
         {
             if (Light < 0)
@@ -63,6 +76,10 @@
             }                
         }
 
+        /// <summary>
+        /// Tjekker at Temperature har en lovlig værdig
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Værdi kan ikke være mindre end -273</exception>
         public void ValidateTemperature()
         {
             if(Temperature < -273)
@@ -71,6 +88,9 @@
             }
         }
 
+        /// <summary>
+        /// Alle Validate metoder kombineret i én metode
+        /// </summary>
         public void Validate()
         {
             ValidateMoistureValue();
@@ -79,9 +99,13 @@
             ValidateTemperature();
         }
 
+        /// <summary>
+        /// ToString for SensorData
+        /// </summary>
+        /// <returns>String</returns>
         public override string ToString()
         {
-            return $"Id: {this.Id}, DateTime: {this.DateTime}, Moisture: {this.Moisture}, Conductivity: {this.Conductivity}, Light: {this.Light}, Temperature: {this.Temperature}";
+            return $"Id: {this.Id}, DateTime: {this.DateTime}, Moisture: {this.Moisture}, Conductivity: {this.Conductivity}, Light: {this.Light}, Temperature: {this.Temperature}, Plant Id: {this.Plant.PlantId}";
         }
     }
 }

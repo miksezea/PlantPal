@@ -6,7 +6,7 @@ const string policyName = "AllowAll";
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: policyName,
@@ -19,15 +19,14 @@ builder.Services.AddCors(options =>
 });
  
 builder.Services.AddControllers();
-//Test
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connection = String.Empty;
+//var connection = String.Empty;
 bool useSql = true;
 if (useSql)
 {
-    connection = Environment.GetEnvironmentVariable("PlantPalDbConnection");
+    //connection = Environment.GetEnvironmentVariable("PlantPalDbConnection");
     var optionsBuilder =
         new DbContextOptionsBuilder<PlantPalDbContext>();
     PlantPalDbContext context =
@@ -36,8 +35,8 @@ if (useSql)
         new SensorDatasRepositoryDb(context));
     builder.Services.AddSingleton<IPlantsRepository>(
         new PlantsRepositoryDb(context));
-    builder.Services.AddDbContext<PlantPalDbContext>(options =>
-        options.UseSqlServer(connection));
+    //builder.Services.AddDbContext<PlantPalDbContext>(options =>
+        //options.UseSqlServer(connection));
 }
 else
 {
