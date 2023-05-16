@@ -89,7 +89,7 @@
         }
 
         /// <summary>
-        /// Alle Validate metoder kombineret i én metode
+        /// Samlet Validate metode
         /// </summary>
         public void Validate()
         {
