@@ -25,6 +25,7 @@ namespace PlantPal.Repositories
             Plant? plantBeDeleted = GetById(Id);
             if (plantBeDeleted != null)
             {
+                //_context.Attach(plantBeDeleted);
                 _context.plants.Remove(plantBeDeleted);
                 _context.SaveChanges();
             }
