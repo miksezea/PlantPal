@@ -28,6 +28,7 @@ namespace PlantPal.Repositories
             // Tilknytter sensordata til planten med PlantSelected 'true'
             newSensorData.Plant = selectedPlant;
 
+            newSensorData.Validate();
             _context.sensordata.Add(newSensorData);
             _context.SaveChanges();
             return newSensorData;
