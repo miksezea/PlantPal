@@ -59,7 +59,12 @@ namespace PlantPal.Repositories
             Plant? updatedPlant = _context.plants.Find(Id); // Henter plante ud fra Id
             if (updatedPlant != null) // Hvis plante ikke er null
             {
-                // Opdater plante
+                List<Plant> plants = _context.plants.ToList();
+                foreach (Plant plant in plants)
+                {
+                    plant.PlantSelected = false;
+                }
+                updatedPlant.PlantSelected = true;
                 _context.SaveChanges(); // Gem ændringer i context
             }
             return updatedPlant; // Returner opdateret plante
