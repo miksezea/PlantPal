@@ -54,7 +54,7 @@ namespace PlantPal.Repositories
             }
             return updatedPlant; // Returner opdateret plante
         }
-        public Plant? UpdateSelected(int Id) // Opdater plante
+        public void UpdateSelected(int Id) // Opdater plante
         {
             Plant? updatedPlant = _context.plants.Find(Id); // Henter plante ud fra Id
             if (updatedPlant != null) // Hvis plante ikke er null
@@ -67,7 +67,6 @@ namespace PlantPal.Repositories
                 updatedPlant.PlantSelected = true;
                 _context.SaveChanges(); // Gem ændringer i context
             }
-            return updatedPlant; // Returner opdateret plante
         }
     }
 }

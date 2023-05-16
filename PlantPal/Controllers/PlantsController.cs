@@ -101,7 +101,7 @@ namespace PlantPal.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpPut("selected/{id}")]
@@ -109,8 +109,8 @@ namespace PlantPal.Controllers
         {
             try
             {
-                Plant? updatedPlant = _repository.UpdateSelected(id);
-                return Ok(updatedPlant);
+                _repository.UpdateSelected(id);
+                return NoContent();
             }
             catch (KeyNotFoundException ex)
             {
