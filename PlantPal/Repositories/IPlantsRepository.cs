@@ -9,5 +9,6 @@ namespace PlantPal.Repositories
         List<Plant> GetAll(); // Hent alle planter
         Plant GetById(int PlantId); // Hent plante ud fra Id
         Plant Update(int PlantId, Plant updates); // Opdater plante
+        Plant UpdateSelected(int PlantId);
     }
 }

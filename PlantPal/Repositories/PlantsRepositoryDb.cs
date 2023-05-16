@@ -48,10 +48,18 @@ namespace PlantPal.Repositories
             {
                 // Opdater plante
                 updatedPlant.Name = updates.Name;
-                updatedPlant.Type = updates.Type;
                 updatedPlant.Description = updates.Description;
                 updatedPlant.Status = updates.Status;
-                updatedPlant.PlantSelected = updates.PlantSelected;
+                _context.SaveChanges(); // Gem ændringer i context
+            }
+            return updatedPlant; // Returner opdateret plante
+        }
+        public Plant? UpdateSelected(int Id) // Opdater plante
+        {
+            Plant? updatedPlant = _context.plants.Find(Id); // Henter plante ud fra Id
+            if (updatedPlant != null) // Hvis plante ikke er null
+            {
+                // Opdater plante
                 _context.SaveChanges(); // Gem ændringer i context
             }
             return updatedPlant; // Returner opdateret plante
