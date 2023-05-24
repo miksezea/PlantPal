@@ -11,7 +11,7 @@ namespace PlantPal.Repositories.Tests
 		[TestInitialize]
         public void Initialize()
         {
-            _repository = new SensorDatasRepository(); // Instantierer en ny instans af klassen SensorDatasRepository
+            repository = new SensorDatasRepository(); // Instantierer en ny instans af klassen SensorDatasRepository
         }
 
         [TestMethod]
