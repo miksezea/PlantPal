@@ -17,15 +17,15 @@ namespace PlantPal.Contexts
                     .SetBasePath(Directory.GetCurrentDirectory()) // Sætter stien til den nuværende mappe
                     .AddJsonFile("appsettings.json") // Tilføjer appsettings.json
                     .Build(); // Bygger konfigurationen
+
                 var connectionString = configuration.GetConnectionString("PlantPalDbConnection"); // Henter connection string fra appsettings.json
+               
                 optionsBuilder.UseSqlServer(connectionString); // Bruger connection string til at forbinde til databasen
             }
         }
 
-
-
-        public DbSet<SensorData> sensordata { get; set; }
-        public DbSet<Plant> plants { get; set; }
+        public DbSet<SensorData> sensordata { get; set; } // DbSet af typen SensorData
+        public DbSet<Plant> plants { get; set; } // DbSet af typen Plant
     }
 }
 

@@ -3,70 +3,84 @@ using PlantPalLib.Models;
 
 namespace PlantPalLib.Tests
 { 
-    [TestClass()]
+    [TestClass]
     public class SensorDataTests
     {
-        int highestValue;
-        int lowestValue;        
-        SensorData correctData = new SensorData() { Moisture = 0, Conductivity = 0, Temperature = -273 };
-        SensorData correctData2 = new SensorData() { Moisture = 100, Conductivity = 123456, Temperature = 41 };
-        SensorData middledata = new SensorData() { Moisture = 50 };
-        SensorData wrongData = new SensorData() { Moisture = -1, Conductivity = -1, Temperature = -274 };
-        SensorData wrongData2 = new SensorData() { Moisture = 101 };
-        
-        [TestMethod()]
-        public void ValidateMoistureValueShouldPass()
+        private int highestValue;
+        private int lowestValue;
+
+		private SensorData correctData;
+		private SensorData correctData2;
+		private SensorData middleData;
+		private SensorData wrongData;
+		private SensorData wrongData2;
+
+        [TestInitialize]
+        public void Initialize() // Kører før hver test
         {
-            highestValue = 100;
-            lowestValue = 0;           
-            correctData.ValidateMoistureValue();
-            correctData2.ValidateMoistureValue();
-            middledata.ValidateMoistureValue();
+			highestValue = 100;
+			lowestValue = 0;
 
-            Assert.IsTrue(correctData.Moisture >= lowestValue && correctData.Moisture <= highestValue);
-            Assert.IsTrue(correctData2.Moisture >= lowestValue && correctData2.Moisture <= highestValue);
-            Assert.IsTrue(middledata.Moisture >= lowestValue && middledata.Moisture <= highestValue);
-        }
+			correctData = new SensorData { Moisture = 0, Conductivity = 0, Temperature = -273 };
+			correctData2 = new SensorData { Moisture = 100, Conductivity = 123456, Temperature = 41 };
+			middleData = new SensorData { Moisture = 50 };
+			wrongData = new SensorData { Moisture = -1, Conductivity = -1, Temperature = -274 };
+			wrongData2 = new SensorData { Moisture = 101 };
+		}
 
-        [TestMethod()]
-        public void ValidateMoistureShouldFail()
-        {            
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateMoistureValue());
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData2.ValidateMoistureValue());
-        }
+		[TestMethod]
+		public void ValidateMoistureValue_ShouldPass() 
+		{
+			correctData.ValidateMoistureValue();
+			correctData2.ValidateMoistureValue(); 
+			middleData.ValidateMoistureValue(); 
 
-        [TestMethod()]
-        public void ValidateConductivityShouldPass()
-        {
-            lowestValue = 0;
-            correctData.ValidateConductivityValue();
-            correctData2.ValidateConductivityValue();
+			Assert.IsTrue(correctData.Moisture >= lowestValue && correctData.Moisture <= highestValue); // Tester om Moisture er større end eller lig med lowestValue og mindre end eller lig med highestValue
+			Assert.IsTrue(correctData2.Moisture >= lowestValue && correctData2.Moisture <= highestValue); // Tester om Moisture er større end eller lig med lowestValue og mindre end eller lig med highestValue
+			Assert.IsTrue(middleData.Moisture >= lowestValue && middleData.Moisture <= highestValue); // Tester om Moisture er større end eller lig med lowestValue og mindre end eller lig med highestValue
+		}
 
-            Assert.IsTrue(correctData.Conductivity >= lowestValue);
-            Assert.IsTrue(correctData2.Conductivity >= lowestValue);            
-        }
+		[TestMethod]
+		public void ValidateMoistureValue_ShouldFail() 
+		{
+			Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateMoistureValue()); // Tester om metoden kaster en ArgumentOutOfRangeException
+			Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData2.ValidateMoistureValue()); // Tester om metoden kaster en ArgumentOutOfRangeException
+		}
 
-        [TestMethod()]
-        public void ValidateConductivityValueShouldFail()
-        {                        
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateConductivityValue());          
-        }
+		[TestMethod]
+		public void ValidateConductivityValue_ShouldPass()
+		{
+			lowestValue = 0; // Conductivity kan ikke være mindre end 0
 
-        [TestMethod()]
-        public void ValidateTemperatureValueShouldPass()
-        {
-            lowestValue = -273;
-            correctData.ValidateTemperature();
-            correctData2.ValidateTemperature();
+			correctData.ValidateConductivityValue(); // Tester om metoden kaster en ArgumentOutOfRangeException
+			correctData2.ValidateConductivityValue(); // Tester om metoden kaster en ArgumentOutOfRangeException
 
-            Assert.IsTrue(correctData.Temperature >= lowestValue);
-            Assert.IsTrue(correctData2.Temperature >= lowestValue);
-        }
+			Assert.IsTrue(correctData.Conductivity >= lowestValue); // Tester om Conductivity er større end eller lig med lowestValue
+			Assert.IsTrue(correctData2.Conductivity >= lowestValue); // Tester om Conductivity er større end eller lig med lowestValue
+		}
 
-        [TestMethod()]
-        public void ValidateTemperatureValueShouldFail()
-        {
-            Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateTemperature());
-        }
-    }
+		[TestMethod]
+		public void ValidateConductivityValue_ShouldFail()
+		{
+			Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateConductivityValue()); // Tester om metoden kaster en ArgumentOutOfRangeException
+		}
+
+		[TestMethod]
+		public void ValidateTemperatureValue_ShouldPass()
+		{
+			lowestValue = -273; // Temperature kan ikke være mindre end -273
+
+			correctData.ValidateTemperature(); // Tester om metoden kaster en ArgumentOutOfRangeException
+			correctData2.ValidateTemperature(); // Tester om metoden kaster en ArgumentOutOfRangeException
+
+			Assert.IsTrue(correctData.Temperature >= lowestValue); // Tester om Temperature er større end eller lig med lowestValue
+			Assert.IsTrue(correctData2.Temperature >= lowestValue); // Tester om Temperature er større end eller lig med lowestValue
+		}
+
+		[TestMethod]
+		public void ValidateTemperatureValue_ShouldFail()
+		{
+			Assert.ThrowsException<ArgumentOutOfRangeException>(() => wrongData.ValidateTemperature()); // Tester om metoden kaster en ArgumentOutOfRangeException
+		}
+	}
 }

@@ -8,7 +8,5 @@
         public string? Description { get; set; }
         public int Status { get; set; }
         public bool PlantSelected { get; set; }
-
-        // Måske tilføj validate metoder samt tests
     }
 }
